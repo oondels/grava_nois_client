@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  /* background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Removido para manter somente em tema escuro--brand: rgba(4, 133, 0, 0.3);
+    --brand-ink: #f3f4f6;
+    --ink: #e5e7eb;
+    --muted: #a1a1aa;
+    --bg: #0b0c0f;
+    --bg-alt: #121318;
+    --card: #16181d;
+    --ring: rgba(255, 77, 90, 0.25); */
+  /* --brand: rgba(4, 133, 0, 0.3);
+  --brand-ink: #1d1d1f;
+  --ink: #1f2937;
+  --muted: #60636b;
+  --bg: #ffffff;
+  --bg-alt: #f6f7f9;
+  --card: #ffffff;
+  --ring: rgba(230, 57, 70, 0.3); */
+  --brand: rgba(4, 133, 0, 0.3);
+  --brand-ink: #f3f4f6;
+  --ink: #e5e7eb;
+  --muted: #a1a1aa;
+  --bg: #0b0c0f;
+  --bg-alt: #121318;
+  --card: #16181d;
+  --ring: rgba(255, 77, 90, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: rgba(4, 133, 0, 0.3);
+    --brand-ink: #f3f4f6;
+    --ink: #e5e7eb;
+    --muted: #a1a1aa;
+    --bg: #0b0c0f;
+    --bg-alt: #121318;
+    --card: #16181d;
+    --ring: rgba(255, 77, 90, 0.25);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  } /* move 50% pois duplicaremos os itens */
+}
+
+/* opcional: suaviza em telas de baixa taxa de atualização */
+.marquee-track {
+  will-change: transform;
+}
+
+/* acessibilidade: pare a animação para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}
