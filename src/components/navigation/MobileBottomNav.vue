@@ -6,11 +6,26 @@
     aria-label="Navegação inferior"
   >
     <div class="h-15 flex items-center justify-between px-3 py-2 gap-2 pb-[env(safe-area-inset-bottom)]">
-      <RouterLink to="/" class="flex items-center">
+      <!-- Botão dinâmico: Logo para ir para user-page, X para sair -->
+      <button
+        v-if="isUserPage"
+        @click="goBack"
+        class="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition active:scale-[.98]"
+        aria-label="Voltar"
+      >
+        <XIcon class="w-6 h-6 text-white drop-shadow-sm" />
+      </button>
+      
+      <RouterLink 
+        v-if="!isUserPage" 
+        to="/user-page" 
+        class="flex items-center justify-center w-12 h-12 rounded-lg hover:bg-black/5 dark:hover:bg-white/10 transition active:scale-[.98]"
+        aria-label="Ir para página do usuário"
+      >
         <img
           :src="LogoGravaNoisSimbol"
           alt="Símbolo Logo Grava Nóis"
-          class="drop-shadow-sm w-auto h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16"
+          class="drop-shadow-sm w-6 h-6"
         />
       </RouterLink>
 
@@ -113,12 +128,13 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useRoute } from "vue-router";
-import { Home, Download, HelpCircle, LogInIcon, MenuIcon, MenuSquare } from "lucide-vue-next";
+import { useRoute, useRouter } from "vue-router";
+import { Home, Download, HelpCircle, LogInIcon, MenuIcon, MenuSquare, XIcon } from "lucide-vue-next";
 import LogoGravaNois from "@/assets/icons/grava-nois-branco.webp";
 import LogoGravaNoisSimbol from "@/assets/icons/grava-nois-simbol.webp";
 
 const route = useRoute();
+const router = useRouter();
 
 type NavItem = {
   label: string;
@@ -151,6 +167,12 @@ function handleItemClick(item: NavItem) {
   if (item.disabled) return;
   // Fecha o menu ao navegar
   closeMenu();
+}
+
+const isUserPage = computed(() => route.path === "/user-page");
+
+function goBack() {
+  router.back();
 }
 </script>
 

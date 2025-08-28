@@ -21,7 +21,7 @@ const routes = [
   },
   // {
   //   path: "/meus-lances",
-  //   name: "MeusLances",
+  //   name: "Meus Lances",
   //   component: () => import("@/pages/MeusLancesPage.vue"),
   //   meta: { requiresAuth: false },
   // },
@@ -47,6 +47,12 @@ const routes = [
     path: "/contato",
     name: "Contato",
     component: () => import("@/pages/ContactPage.vue"),
+    meta: { requiresAuth: false },
+  },
+  {
+    path: "/user-page",
+    name: "Usuário",
+    component: () => import("@/pages/UserPage.vue"),
     meta: { requiresAuth: false },
   },
   {
